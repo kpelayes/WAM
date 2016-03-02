@@ -8,16 +8,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="karen.game.Play"
-    android:clickable="true"
-    android:background="#29722c"
-    android:onClick="incrementScore">
+    android:clickable="false"
+    android:background="#29722c">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton"
         android:layout_marginTop="75dp"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignParentTop="true"
@@ -28,17 +27,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="Score: 0"
         android:id="@+id/score"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textColor="#faf9f9" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton2"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignTop="@+id/imageButton"
@@ -46,10 +46,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton3"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignTop="@+id/imageButton2"
@@ -58,10 +58,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton4"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_centerVertical="true"
@@ -70,10 +70,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton5"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignBottom="@+id/imageButton4"
@@ -81,10 +81,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton6"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_centerVertical="true"
@@ -93,10 +93,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton7"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_above="@+id/score"
@@ -106,10 +106,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton8"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignBottom="@+id/imageButton7"
@@ -117,10 +117,10 @@
         android:background="#29722c" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
         android:id="@+id/imageButton9"
-        android:src="@drawable/mole"
+        android:src="@drawable/molehill"
         android:clickable="true"
         android:onClick="incrementScore"
         android:layout_alignTop="@+id/imageButton8"
@@ -135,6 +135,8 @@
         android:text="0:45"
         android:id="@+id/timer"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#faf9f9"
+        android:textSize="30dp" />
 
 </RelativeLayout>
