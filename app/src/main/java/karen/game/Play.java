@@ -1,5 +1,7 @@
 package karen.game;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -37,6 +39,7 @@ public class Play extends AppCompatActivity {
     private Handler handler2;
     //font for the score and timer text
     private Typeface font;
+    int calls=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
@@ -90,59 +93,78 @@ public class Play extends AppCompatActivity {
         }
         //this function will get called every half a second until the countdown is finished
         public void onTick(long millisUntilFinished) {
+            calls++;
             //change the time to display how much time is left since it's in milliseconds it has to be divided by 1000 to display seconds
             time.setText("0:" + millisUntilFinished / 1000);
             //generate a random number and depending on the number enable a certain mole
+            char icon='m';
+            if ((calls%5)==0)
+                icon='t';
             int r=(int)(Math.random()*10);
             if (r==1){
                 if (!m1.isEnabled())
-                    enableMole(m1);
+                    enableMole(m1,icon);
             }else if (r==2){
                 if (!m2.isEnabled())
-                    enableMole(m2);
+                    enableMole(m2,icon);
             }
             else if (r==3){
                 if (!m3.isEnabled())
-                    enableMole(m3);
+                    enableMole(m3,icon);
             }
             else if (r==4){
                 if (!m4.isEnabled())
-                    enableMole(m4);
+                    enableMole(m4,icon);
             }
             else if (r==5){
                 if (!m5.isEnabled())
-                    enableMole(m5);
+                    enableMole(m5,icon);
             }
             else if (r==6){
                 if (!m6.isEnabled())
-                    enableMole(m6);
+                    enableMole(m6,icon);
             }
             else if (r==7){
                 if (!m7.isEnabled())
-                    enableMole(m7);
+                    enableMole(m7,icon);
             }
             else if (r==8){
                 if (!m8.isEnabled())
-                    enableMole(m8);
+                    enableMole(m8,icon);
             }
             else {
                 if (!m9.isEnabled())
-                    enableMole(m9);
+                    enableMole(m9,icon);
             }
         }
     }
     //the imagebuttons' onClick attribute in the xml is set to call this function to increment the score
     //it only gets called if it's clicked while enabled
     public void incrementScore(View v) {
-        //score gets incremented by 1 and then changes the text of the score
-        s++;
-        score.setText("Score: " + s);
         //gets the id of the mole that was clicked on
         ImageButton ibutton=(ImageButton) findViewById(v.getId());
 
-        //changes the image back to a molehill and then disables it
-        ibutton.setImageResource(R.drawable.molehill);
-        ibutton.setEnabled(false);
+        if (ibutton.getDrawable().equals(getResources().getDrawable(R.drawable.mole))) {
+            //score gets incremented by 1 and then changes the text of the score
+            s++;
+            score.setText("Score: " + s);
+            //changes the image back to a molehill and then disables it
+            ibutton.setImageResource(R.drawable.molehill);
+            ibutton.setEnabled(false);
+        }else
+        {
+            s--;
+            score.setText("Score: " + s);
+            AnimatorSet wheelSet = (AnimatorSet)
+                    AnimatorInflater.loadAnimator(this, R.animator.fall);
+            //set the view as target
+            wheelSet.setTarget(ibutton);
+            //start the animation
+            wheelSet.start();
+            //changes the image back to a molehill and then disables it
+            ibutton.setImageResource(R.drawable.molehill);
+            ibutton.setEnabled(false);
+        }
     }
     //disables all the moles
     public void clear(){
@@ -157,9 +179,12 @@ public class Play extends AppCompatActivity {
         m9.setEnabled(false);
     }
     //change the image to display a mole and create a handler to wait 2 seconds before disabling it and changing the image again to display a molehill
-    public void enableMole(final ImageButton m){
+    public void enableMole(final ImageButton m, char i){
         m.setEnabled(true);
-        m.setImageResource(R.drawable.mole);
+        if (i=='m')
+            m.setImageResource(R.drawable.mole);
+        else
+            m.setImageResource(R.drawable.tree);
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             ImageButton mole=(ImageButton) findViewById(m.getId());

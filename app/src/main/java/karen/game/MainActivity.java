@@ -22,11 +22,9 @@ public class MainActivity extends AppCompatActivity {
         title.setTypeface(titleFont);
 
         Button button=(Button) findViewById(R.id.play);
-        Button button2=(Button) findViewById(R.id.options);
         Button button3=(Button) findViewById(R.id.highScores);
         //sets fonts for all the buttons
         button.setTypeface(font);
-        button2.setTypeface(font);
         button3.setTypeface(font);
 
 
